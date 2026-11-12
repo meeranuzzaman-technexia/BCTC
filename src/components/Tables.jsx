@@ -1,44 +1,38 @@
 import Reveal from "./ui/Reveal.jsx";
-import { PERSONAL, PROFESSIONAL } from "../data/content.js";
+import SplitText from "./ui/SplitText.jsx";
+import ArrowButton from "./ui/ArrowButton.jsx";
+import ImageCard from "./ui/ImageCard.jsx";
+import { FACILITIES } from "../data/content.js";
 
-function Table({ data, tone = "white", delay = 0 }) {
-  const bg = tone === "beige" ? "bg-beige" : "bg-paper";
-  return (
-    <Reveal delay={delay} className={`w-full rounded-[6px] p-6 md:p-7 ${bg}`}>
-      <div className="mb-2 flex w-full items-center justify-between">
-        <h3 className="t-h3 text-ink">{data.heading}</h3>
-        <span className="h-4 w-4 rounded-full bg-ink" />
-      </div>
-      <p className="t-base text-ink">{data.sub}</p>
-
-      <ul className="mt-8">
-        {data.items.map(([title, desc], i) => (
-          <li
-            key={title}
-            className={`dash-top flex flex-col gap-1.5 py-3 ${
-              i === data.items.length - 1 ? "dash-bottom" : ""
-            }`}
-          >
-            <p className="t-list-title text-ink">{title}</p>
-            <p className="t-base font-normal text-ink/70">{desc}</p>
-          </li>
-        ))}
-      </ul>
-    </Reveal>
-  );
-}
-
+/**
+ * SECTION 6 — Facilities Preview
+ * Light background, four large image cards, Explore All Facilities button.
+ */
 export default function Tables() {
   return (
-    <section id="personal-professional" className="relative z-10 bg-grey">
-      <div className="px-site pt-8 pb-[72px]">
-        <div className="flex flex-col gap-3 lg:flex-row lg:items-start">
-          <div className="lg:w-1/2">
-            <Table data={PERSONAL} tone="white" />
-          </div>
-          <div className="lg:w-1/2">
-            <Table data={PROFESSIONAL} tone="beige" delay={0.1} />
-          </div>
+    <section id="facilities" className="relative z-10 bg-grey">
+      <div className="px-site py-[clamp(72px,10vw,140px)]">
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+          <SplitText
+            as="h2"
+            lines={FACILITIES.title}
+            className="t-h2-black max-w-[16ch] text-ink"
+          />
+          <Reveal delay={0.15} className="lg:max-w-[42ch]">
+            <p className="t-base-lg text-ink/80">{FACILITIES.sub}</p>
+          </Reveal>
+        </div>
+
+        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {FACILITIES.cards.map((card) => (
+            <ImageCard key={card.n} item={card} />
+          ))}
+        </div>
+
+        <div className="mt-10 flex justify-start">
+          <ArrowButton variant="dark" size="lg" href="#facilities">
+            {FACILITIES.cta}
+          </ArrowButton>
         </div>
       </div>
     </section>

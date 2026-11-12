@@ -1,20 +1,51 @@
 @import "tailwindcss";
 
+/* ---------- Neue Montreal (files in /public/font, PP Neue Montreal) ---------- */
+@font-face {
+  font-family: "Neue Montreal";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/font/NeueMontreal-Book.otf") format("opentype");
+}
+@font-face {
+  font-family: "Neue Montreal";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/font/NeueMontreal-Medium.otf") format("opentype");
+}
+@font-face {
+  font-family: "Neue Montreal";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/font/NeueMontreal-Bold.otf") format("opentype");
+}
+
 @theme {
-  --color-grey: #d4d2cf;
-  --color-ink: #1f1f1f;
-  --color-pure: #010101;
-  --color-paper: #f1f1f1;
-  --color-beige: #c5b197;
-  --font-sans: "Inter", "Neue Montreal", Arial, sans-serif;
+  /* Maven-inspired palette — deep green, lighter green, off-white */
+  /* ============================================================
+     SITE COLORS — edit these to restyle the whole website.
+     --color-X in @theme generates bg-X / text-X / border-X classes.
+     grey   = page background (white)          paper = off-white
+     beige  = sage bands (Journey/Recognition) ink   = deep green text
+     pure   = darkest green (dark sections)
+     ============================================================ */
+  --color-grey: #ffffff;   /* page background — white */
+  --color-ink: #143b2a;    /* deep green (text on light, card backdrops) */
+  --color-pure: #0c2b1f;   /* deepest green (dark sections, footer, overview) */
+  --color-paper: #f7f5ee;  /* warm off-white */
+  --color-beige: #bdd2c1;  /* deeper sage (split sections / banners) */
+  --font-sans: "Neue Montreal", "Inter", "Neue Montreal", Arial, sans-serif;
 }
 
 :root {
-  --grey: #d4d2cf;
-  --black: #1f1f1f;
-  --white: #f1f1f1;
-  --biege: #c5b197;
-  --pure: #010101;
+  --grey: #ffffff;
+  --black: #143b2a;
+  --white: #f7f5ee;
+  --biege: #bdd2c1;
+  --pure: #0c2b1f;
   --pad-x: 32px;
 }
 
@@ -35,7 +66,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -259,18 +289,18 @@ button {
 
 /* ---------- Dashed dividers (utilities so responsive variants work) ---------- */
 @utility dash-top {
-  border-top: 1px dashed rgba(31, 31, 31, 0.25);
+  border-top: 1px dashed rgba(20, 59, 42, 0.28);
 }
 @utility dash-right {
-  border-right: 1px dashed rgba(31, 31, 31, 0.25);
+  border-right: 1px dashed rgba(20, 59, 42, 0.28);
 }
 @utility dash-bottom {
-  border-bottom: 1px dashed rgba(31, 31, 31, 0.25);
+  border-bottom: 1px dashed rgba(20, 59, 42, 0.28);
 }
 
 /* ---------- Sticky SEO category title gradient ---------- */
 .seo-title {
-  background-image: linear-gradient(#f1f1f1, #f1f1f1 75%, rgba(241, 241, 241, 0));
+  background-image: linear-gradient(#f7f5ee, #f7f5ee 75%, rgba(247, 245, 238, 0));
 }
 
 /* ---------- Inputs ---------- */

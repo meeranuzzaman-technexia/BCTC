@@ -104,8 +104,8 @@ export default function FacilitiesOrbit() {
       className="relative -mb-[100svh] h-[550vh] bg-pure"
     >
       <div
-        className="sticky top-0 h-[100svh] w-full overflow-hidden text-paper"
-        style={{ "--d": "clamp(620px, 170vw, 1500px)" }}
+        className="sticky top-10 h-[100svh] w-full overflow-hidden text-paper"
+        style={{ "--d": "clamp(620px, 170vw, 900px)" }}
       >
         <div className="px-site absolute left-0 top-[clamp(88px,7vw,120px)] z-10 max-w-[46ch]">
           <SplitText

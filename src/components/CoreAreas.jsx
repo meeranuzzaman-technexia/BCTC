@@ -62,8 +62,9 @@ export default function CoreAreas() {
         </div>
 
         {/* Three additional cards — dark green panel, filled white icons,
-            no index numbers (reference: image-6.png) */}
-        <div className="mt-14 grid grid-cols-1 divide-y divide-white/10 overflow-hidden rounded-[8px] border border-white/10 bg-pure sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+            no index numbers (reference: image-6.png).
+            Spacing kam: no min-height, no mt-auto, chhota gap/padding. */}
+        <div className="mt-10 grid grid-cols-1 divide-y divide-white/10 overflow-hidden rounded-[8px] border border-white/10 bg-pure sm:grid-cols-3 sm:divide-x sm:divide-y-0">
           {CORE_AREAS.additional.map((item, i) => {
             const Icon = ADDITIONAL_ICONS[i] ?? Pill;
             return (
@@ -71,16 +72,16 @@ export default function CoreAreas() {
                 key={item.title}
                 delay={i * 0.12}
                 y={48}
-                className="flex min-h-[240px] flex-col gap-10 p-[clamp(24px,2.6vw,44px)] sm:min-h-[280px]"
+                className="flex flex-col gap-4 p-5 sm:p-6"
               >
                 <Icon
-                  size={38}
+                  size={32}
                   stroke="none"
                   fill="#FFFFFF"
                   aria-hidden="true"
-                  className="h-9 w-9"
+                  className="h-8 w-8"
                 />
-                <div className="mt-auto flex flex-col gap-3">
+                <div className="flex flex-col gap-1.5">
                   <p className="t-grid-title text-white">{item.title}</p>
                   <p className="t-base max-w-[36ch] font-normal text-[#BDD2C1]">
                     {item.desc}

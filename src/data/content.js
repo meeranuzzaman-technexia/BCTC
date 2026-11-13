@@ -93,28 +93,28 @@ export const CORE_AREAS = {
       sub: "Round-the-Clock Care",
       desc: "Round-the-clock emergency services to support patients requiring immediate medical attention.",
       image:
-        "/media/1.jpg",    },
+        "/media/5.webp",    },
     {
       n: "02",
       title: "Orthopaedic Surgery",
       sub: "Knee Replacement",
       desc: "Specialized orthopaedic care and surgical procedures, including knee replacement surgery.",
       image:
-        "/media/2.jpg",    },
+        "/media/2.webp",    },
     {
       n: "03",
       title: "Diagnostic Services",
       sub: "CT · X-Ray · Ultrasound · Lab",
       desc: "Diagnostic facilities including CT Scan, X-Ray, ultrasound and laboratory services to support patient assessment and treatment.",
       image:
-        "/media/3.jpg",    },
+        "/media/3.webp",    },
     {
       n: "04",
       title: "Surgical Care",
       sub: "OT · Endoscopy · Laparoscopy",
       desc: "Surgical facilities including modular operation theatres, endoscopy and laparoscopy.",
       image:
-        "/media/4.jpg",    },
+        "/media/4.webp",    },
   ],
   additional: [
     {
@@ -237,12 +237,13 @@ export const FOOTER = {
   bottom: "© Bone Care Trauma Centre. All Rights Reserved.",
 };
 
-/* Footer social icons — ⚠️ PLACEHOLDER hrefs.
-   Bone Care ke real social URLs available nahi hain; inhe real links se replace
-   karein (ya poora array hata den, Footer automatically row hide kar deta hai). */
+/* Footer social icons — real Bone Care profiles.
+   Naya link add karna ho to yahan `{ label, href }` add karein; Footer us
+   label ka icon apne SOCIAL_ICONS map se dhoondega (map me na ho to skip
+   ho jayega). Poora array hata dein to social row khud hide ho jati hai. */
 export const SOCIAL_LINKS = [
-  { label: "Instagram", href: "#" },
-  { label: "Facebook", href: "#" },
-  { label: "LinkedIn", href: "#" },
-  { label: "Twitter", href: "#" },
+  { label: "Facebook", href: "https://www.facebook.com/bonecaretraumacentre.hyd/" },
+  { label: "Instagram", href: "https://www.instagram.com/bonecaretraumacentre/" },
+  { label: "TikTok", href: "https://www.tiktok.com/@bone.care.trauma" },
+  
 ];

@@ -17,8 +17,8 @@ export default function Sides() {
     <PageScroll className="bg-[#F7F5EE]">
       <section
         id="about"
-        className="relative z-20 flex min-h-[100svh] flex-col bg-paper lg:h-[100svh] lg:flex-row"
-      >
+        data-logo="white"
+        className="relative z-20 flex min-h-[100svh] flex-col bg-paper lg:h-[100svh] lg:flex-row"      >
       {/* Image */}
       <div className="h-[60vw] w-full overflow-hidden lg:h-full lg:w-1/2">
         <img
@@ -30,8 +30,7 @@ export default function Sides() {
       </div>
 
       {/* Text panel */}
-      <div className="flex h-full w-full flex-col bg-beige px-[var(--pad-x)] pt-20 pb-20 lg:w-1/2 lg:pt-[42px] lg:pb-8">
-        <p className="t-small font-medium uppercase tracking-[0.18em] text-ink/75">
+      <div className="flex h-full w-full flex-col bg-beige px-[var(--pad-x)] pt-20 pb-20 lg:w-1/2 lg:pt-[42px] lg:pb-8">        <p className="t-small font-medium uppercase tracking-[0.18em] text-ink/75">
           {JOURNEY.label}
         </p>
         <SplitText as="h2" lines={JOURNEY.title} className="t-h2-sides mt-3 text-ink" />

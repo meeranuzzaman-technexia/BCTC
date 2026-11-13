@@ -1,7 +1,43 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import ArrowButton from "./ui/ArrowButton.jsx";
 import { NAV_LINKS, MOBILE_LINKS, CONTACT } from "../data/content.js";
+import { cn } from "../lib/utils.js";
+
+/** Reverse-sticky: hides on scroll down, returns on any upward scroll or near the top.
+ *  Also reports whether the page has been scrolled at all (for the glass background). */
+function useHeaderScroll(menuOpen) {
+  const [hidden, setHidden] = useState(false);
+  const [scrolled, setScrolled] = useState(() =>
+    typeof window !== "undefined" ? window.scrollY > 24 : false
+  );
+  const lastY = useRef(0);
+  const ticking = useRef(false);
+
+  useEffect(() => {
+    lastY.current = window.scrollY || 0;
+    const onScroll = () => {
+      if (ticking.current) return;
+      ticking.current = true;
+      requestAnimationFrame(() => {
+        const y = window.scrollY || 0;
+        const diff = y - lastY.current;
+        setScrolled(y > 24);
+        if (menuOpen || y < 80) {
+          setHidden(false);
+        } else if (Math.abs(diff) > 5) {
+          setHidden(diff > 0 && y > 140);
+          lastY.current = y;
+        }
+        ticking.current = false;
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [menuOpen]);
+
+  return { hidden, scrolled };
+}
 
 /** Determines whether the header currently sits above a dark section. */
 function useHeaderLight() {
@@ -28,9 +64,12 @@ function useHeaderLight() {
   return light;
 }
 
+
 export default function Header() {
   const light = useHeaderLight();
   const [menuOpen, setMenuOpen] = useState(false);
+  const { hidden, scrolled } = useHeaderScroll(menuOpen);
+  const solid = menuOpen || scrolled;
 
   useEffect(() => {
     if (menuOpen) document.body.classList.add("no-scroll");
@@ -42,16 +81,38 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-[120]">
+      <header
+        className={cn(
+          "fixed inset-x-0 top-0 z-[120] will-change-transform",
+          "border-b backdrop-blur-2xl backdrop-saturate-150",
+          "transition-[translate,background-color,border-color,box-shadow] ease-[cubic-bezier(0.22,1,0.36,1)]",
+          solid
+            ? menuOpen || light
+              ? "border-white/10 bg-[#0a241b]/60 shadow-[0_18px_44px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.09)]"
+              : "border-black/[0.06] bg-white/65 shadow-[0_18px_44px_rgba(20,59,42,0.10),inset_0_1px_0_rgba(255,255,255,0.9)]"
+            : "border-transparent bg-transparent shadow-none backdrop-blur-none backdrop-saturate-100",
+          // appear (scroll-up) slower & softer than disappearance — 0.7s vs 0.3s
+          hidden ? "-translate-y-[105%] duration-300" : "translate-y-0 duration-700"
+        )}
+      >
         <div className="px-site w-full py-[10px] md:py-[12px]">
           <div className="flex items-center justify-between gap-6">
             {/* Logo */}
             <a
               href="#home"
               onClick={() => setMenuOpen(false)}
-              className={`t-logo whitespace-nowrap transition-colors duration-500 ${textColor}`}
+              aria-label="Bone Care Trauma Centre — Home"
+              className="shrink-0"
             >
-              Bone Care Trauma Centre
+              <img
+                src={
+                  menuOpen || light
+                    ? "/media/bone-care-logo-dark.png"
+                    : "/media/bone-care-logo.png"
+                }
+                alt="Bone Care Trauma Centre"
+                className="h-[42px] w-auto transition-all duration-500 md:h-[52px]"
+              />
             </a>
 
             {/* Desktop nav */}

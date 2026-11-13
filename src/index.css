@@ -1,4 +1,11 @@
+@import url(https://db.onlinewebfonts.com/c/916b90745d4fc6c6fa3b4af2c9f7c840?family=Nexa-Black);
 @import "tailwindcss";
+
+/* ---------- Technexia wordmark (footer attribution only) ---------- */
+.tx-logo {
+  font-family: 'Nexa-Black' !important;
+  font-weight: 900 !important;
+}
 
 /* ---------- Neue Montreal (files in /public/font, PP Neue Montreal) ---------- */
 @font-face {
@@ -28,24 +35,28 @@
   /* ============================================================
      SITE COLORS — edit these to restyle the whole website.
      --color-X in @theme generates bg-X / text-X / border-X classes.
-     grey   = page background (white)          paper = off-white
-     beige  = sage bands (Journey/Recognition) ink   = deep green text
-     pure   = darkest green (dark sections)
+     grey   = page background (white)          paper = porcelain off-white
+     beige  = cool sage-grey (chips/banners)   ink   = deep teal-slate text
+     pure   = deep teal-slate (dark sections)  accent= logo teal #00C0B0
      ============================================================ */
   --color-grey: #ffffff;   /* page background — white */
-  --color-ink: #143b2a;    /* deep green (text on light, card backdrops) */
-  --color-pure: #0c2b1f;   /* deepest green (dark sections, footer, overview) */
-  --color-paper: #f7f5ee;  /* warm off-white */
-  --color-beige: #bdd2c1;  /* deeper sage (split sections / banners) */
+  --color-ink: #153B3A;    /* deep teal-slate (text on light, card backdrops) */
+  --color-pure: #153B3A;   /* dark sections / footer / overview (Option C) */
+  --color-paper: #FBFCFA;  /* porcelain (text on dark, quiet surfaces) */
+  --color-beige: #DCE7E4;  /* cool sage-grey (split sections / banners) */
+  --color-accent: #01CAB8; /* logo teal — primary brand accent */
+  --color-accent-ink: #052C29; /* near-black teal for text/icons on accent */
   --font-sans: "Neue Montreal", "Inter", "Neue Montreal", Arial, sans-serif;
 }
 
 :root {
   --grey: #ffffff;
-  --black: #143b2a;
-  --white: #f7f5ee;
-  --biege: #bdd2c1;
-  --pure: #0c2b1f;
+  --black: #153B3A;
+  --white: #FBFCFA;
+  --biege: #DCE7E4;
+  --pure: #153B3A;
+  --accent: #01CAB8;
+  --accent-ink: #052C29;
   --pad-x: 32px;
 }
 
@@ -101,8 +112,8 @@ button {
 }
 
 ::selection {
-  background: var(--black);
-  color: var(--white);
+  background: var(--accent);
+  color: var(--accent-ink);
 }
 
 /* ---------- Layout helpers ---------- */
@@ -265,7 +276,7 @@ button {
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 60s linear infinite;
+  animation: marquee 42s linear infinite;
   will-change: transform;
 }
 .marquee:hover .marquee-track {
@@ -348,4 +359,48 @@ button {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Hero compact mode — small phones & short screens (e.g. iPhone SE, landscape) */
+@media (max-width: 767px) {
+  .hero-fit {
+    padding-top: 78px;
+    padding-bottom: max(84px, calc(env(safe-area-inset-bottom, 0px) + 28px));
+  }
+  .hero-fit .t-h1 {
+    font-size: clamp(33px, 9.6vw, 46px);
+    line-height: 1.0;
+  }
+  .hero-fit .t-base-lg {
+    font-size: 14px;
+    line-height: 1.32;
+    max-width: 100%;
+  }
+}
+@media (max-height: 720px) and (max-width: 1024px) {
+  .hero-fit {
+    padding-top: 66px;
+    padding-bottom: max(64px, calc(env(safe-area-inset-bottom, 0px) + 16px));
+  }
+  .hero-fit .t-h1 {
+    font-size: clamp(30px, 8.5vw, 40px);
+  }
+  .hero-fit .t-base-lg {
+    font-size: 13px;
+    line-height: 1.28;
+  }
+  .hero-fit .hero-bottom {
+    gap: 14px;
+  }
+  .hero-fit .hero-ctas {
+    gap: 10px;
+  }
+}
+
+
+/* Brand accent bits (Option C — logo teal) */
+:is(a, button):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
 }

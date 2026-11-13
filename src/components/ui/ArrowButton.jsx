@@ -13,9 +13,9 @@ export default function ArrowButton({
   className = "",
   size = "md",
 }) {
-  const isWhite = variant === "white";
-  const pill = isWhite ? "bg-paper text-ink" : "bg-pure text-paper";
-  const circle = isWhite ? "bg-ink text-paper" : "bg-paper text-ink";
+  // variant kept for API compatibility — ALL CTAs now use the logo teal (primary brand)
+  const pill = "bg-accent text-accent-ink hover:bg-[#00BBA7]";
+  const circle = "bg-accent-ink text-accent";
   const h = size === "lg" ? "h-[52px] pl-6" : "h-[48px] pl-5";
   const circleSize = size === "lg" ? "h-[44px] w-[44px]" : "h-[40px] w-[40px]";
 
@@ -25,7 +25,7 @@ export default function ArrowButton({
         {children}
       </span>
       <span
-        className={`relative flex ${circleSize} shrink-0 items-center justify-center overflow-hidden rounded-full ${circle}`}
+        className={`relative flex ${circleSize} shrink-0 items-center justify-center overflow-hidden rounded-full ${circle} transition-colors duration-300`}
       >
         <ArrowUpRight className="arrow-first absolute h-[18px] w-[18px]" strokeWidth={1.8} />
         <ArrowUpRight className="arrow-second absolute h-[18px] w-[18px]" strokeWidth={1.8} />
@@ -33,7 +33,7 @@ export default function ArrowButton({
     </>
   );
 
-  const classes = `arrow-btn group inline-flex items-center justify-between gap-7 rounded-full p-1 ${h} ${pill} transition-opacity duration-300 hover:opacity-90 ${className}`;
+  const classes = `arrow-btn group inline-flex items-center justify-between gap-7 rounded-full p-1 ${h} ${pill} transition-colors duration-300 ${className}`;
 
   if (href) {
     return (

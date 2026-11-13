@@ -5,7 +5,7 @@
  */
 export default function ImageCard({ item }) {
   return (
-    <article className="group relative mr-4 h-[clamp(380px,42vw,560px)] w-[clamp(290px,32vw,420px)] shrink-0 overflow-hidden rounded-[8px] bg-ink text-paper">
+    <article className="group relative mr-4 h-[clamp(430px,47vw,620px)] w-[clamp(325px,35vw,465px)] shrink-0 overflow-hidden rounded-[8px] bg-ink text-paper">
       <img
         src={item.image}
         alt={item.title}

@@ -8,6 +8,7 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import ArrowButton from "./ui/ArrowButton.jsx";
+import SplitText from "./ui/SplitText.jsx";
 import { FACILITIES } from "../data/content.js";
 
 const STEP = 22;          // degrees between items
@@ -97,24 +98,31 @@ export default function FacilitiesOrbit() {
       id="facilities"
       ref={trackRef}
       data-theme="dark"
+      data-logo="white"
       // 550vh = 450vh scroll + 100vh overlay phase
       // -mb-[100svh] = neeche wala section 100svh pehle shuru hota hai, isliye wo upar overlay hota hai
       className="relative -mb-[100svh] h-[550vh] bg-pure"
     >
       <div
         className="sticky top-0 h-[100svh] w-full overflow-hidden text-paper"
-        style={{ "--d": "clamp(640px, 90vw, 1500px)" }}
+        style={{ "--d": "clamp(620px, 170vw, 1500px)" }}
       >
-        <motion.div
-          className="px-site absolute left-0 top-[clamp(88px,7vw,120px)] z-10 max-w-[46ch]"
-          initial={{ opacity: 0, y: 36 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <h2 className="t-h2-black max-w-[16ch] text-paper">{FACILITIES.title}</h2>
-          <p className="t-base mt-4 max-w-[46ch] text-paper/75">{FACILITIES.sub}</p>
-        </motion.div>
+        <div className="px-site absolute left-0 top-[clamp(88px,7vw,120px)] z-10 max-w-[46ch]">
+          <SplitText
+            as="h2"
+            lines={FACILITIES.title}
+            className="t-h2-black max-w-[16ch] text-paper"
+          />
+          <motion.p
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            className="t-base mt-4 max-w-[46ch] text-paper/75"
+          >
+            {FACILITIES.sub}
+          </motion.p>
+        </div>
 
         <motion.div
           style={{ opacity: orbitOpacity }}
@@ -148,11 +156,10 @@ export default function FacilitiesOrbit() {
           style={{ opacity: orbitOpacity, y: orbitY }}
         >
           <div
-            className="absolute left-1/2 -translate-x-1/2"
+            className="absolute left-1/2 -translate-x-1/2 top-[clamp(330px,46svh,430px)] lg:top-[clamp(260px,38svh,400px)]"
             style={{
               width: "var(--d)",
               height: "var(--d)",
-              top: "clamp(260px, 38svh, 400px)",
             }}
           >
             <motion.div className="relative h-full w-full" style={{ rotate }}>

@@ -46,8 +46,7 @@ export default function App() {
           </div>
         </div>
 
-        {/* CTA: Recognition ke upar overlay */}
-        <CTA />
+        {/* CTA: Recognition ke upar overlay */}        <CTA />
       </main>
       <Footer />
       {/* <WaitlistModal /> */}

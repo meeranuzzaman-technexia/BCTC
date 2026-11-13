@@ -30,12 +30,7 @@ export default function Reveal({
       { rootMargin: "0px 0px -8% 0px", threshold: 0 }
     );
     io.observe(el);
-    // Hard fallback: content can never stay invisible
-    const t = setTimeout(() => setShow(true), 1200);
-    return () => {
-      io.disconnect();
-      clearTimeout(t);
-    };
+    return () => io.disconnect();
   }, []);
 
   return (

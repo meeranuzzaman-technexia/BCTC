@@ -5,15 +5,14 @@ import { CTA as CTA_DATA, CONTACT, MEDIA } from "../data/content.js";
 
 /**
  * SECTION 8 — Final Call to Action
- * Facilities (sticky) ke upar overlay hota hai. z-20 + opaque bg zaroori hai.
- */
+ * Facilities (sticky) ke upar overlay hota hai. z-20 + opaque bg zaroori hai. */
 export default function CTA() {
   return (
     <section
       id="contact"
       data-theme="dark"
-      className="relative z-30 min-h-[100svh] w-full overflow-hidden bg-ink shadow-[0_-30px_60px_rgba(0,0,0,0.35)]"
-    >
+      data-logo="colored"
+      className="relative z-30 min-h-[100svh] w-full overflow-hidden bg-ink shadow-[0_-30px_60px_rgba(0,0,0,0.35)]"    >
       <img
         src={MEDIA.ctaImage}
         alt="Bone Care Trauma Centre — patient care"

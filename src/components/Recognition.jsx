@@ -1,4 +1,65 @@
+import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import Reveal from "./ui/Reveal.jsx";
+
+/** Clipped slide-up title: IO observes the (static) container, motion children do the moving. */
+function RiseTitle() {
+  const ref = useRef(null);
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || typeof IntersectionObserver === "undefined") {
+      setShow(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setShow(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "0px 0px -10% 0px", threshold: 0 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  const lineCls = "block overflow-hidden pb-[0.1em] -mb-[0.1em]";
+  const innerCls = "block will-change-transform";
+
+  return (
+    <h2 ref={ref} className="t-h2-black text-ink" aria-label="A Milestone in Healthcare for Hyderabad">
+      <span className={lineCls}>
+        <motion.span
+          className={innerCls}
+          initial={{ y: "110%" }}
+          animate={show ? { y: "0%" } : { y: "110%" }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        >
+          A Milestone in Healthcare
+        </motion.span>
+      </span>
+      <span className={lineCls}>
+        <motion.span
+          className={innerCls}
+          initial={{ y: "110%" }}
+          animate={show ? { y: "0%" } : { y: "110%" }}
+          transition={{ duration: 0.9, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+        >
+          for{" "}
+          <em
+            className="font-normal italic"
+            style={{ fontFamily: SERIF, color: PINE }}
+          >
+            Hyderabad
+          </em>
+        </motion.span>
+      </span>
+    </h2>
+  );
+}
 
 // Purane project ke tokens (forest/sage/pine/sand) ke hex equivalents,
 // kyunki current theme mein ink/paper hain.
@@ -106,6 +167,7 @@ export default function Recognition() {
   return (
     <section
       id="recognition"
+      data-logo="colored"
       className="relative flex min-h-[100svh] w-full items-center bg-paper"
     >
       <div className="px-site w-full py-[clamp(72px,9vw,140px)]">
@@ -122,19 +184,7 @@ export default function Recognition() {
               </span>
             </Reveal>
 
-            <Reveal delay={0.1}>
-              <h2 className="t-h2-black text-ink">
-                A Milestone in Healthcare
-                <br />
-                for{" "}
-                <em
-                  className="font-normal italic"
-                  style={{ fontFamily: SERIF, color: PINE }}
-                >
-                  Hyderabad
-                </em>
-              </h2>
-            </Reveal>
+            <RiseTitle />
 
             <Reveal delay={0.2}>
               <p className="t-base-lg max-w-[46ch] text-ink/70">

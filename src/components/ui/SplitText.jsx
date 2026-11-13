@@ -5,10 +5,8 @@ import { motion } from "framer-motion";
  * Splits text into words and slides each word up into view when scrolled into viewport.
  * `lines` can be a string or an array of strings (each rendered on its own line).
  *
- * Visibility is guaranteed: words start clipped at y:110% inside overflow-hidden
- * wrappers, so we reveal them with our own IntersectionObserver plus a hard
- * fallback timer — headings can never stay invisible, regardless of viewport
- * quirks or observers not firing.
+ * Scroll-triggered: reveals exactly once, when the (static) heading element
+ * crosses into the viewport. No timers — animations play on scroll, not on reload.
  */
 export default function SplitText({
   lines,
@@ -39,12 +37,7 @@ export default function SplitText({
       { rootMargin: "0px 0px -10% 0px", threshold: 0 }
     );
     io.observe(el);
-    // Hard fallback: never leave headings clipped/hidden
-    const t = setTimeout(() => setShow(true), 1200);
-    return () => {
-      io.disconnect();
-      clearTimeout(t);
-    };
+    return () => io.disconnect();
   }, []);
 
   return (

@@ -15,8 +15,8 @@
 export const MEDIA = {
   heroVideo:
     "https://videos.pexels.com/video-files/3971197/3971197-hd_1920_1080_24fps.mp4",
-  heroPoster:
-    "https://images.pexels.com/videos/3971197/abstract-colours-food-colouring-macro-3971197.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=630&w=1200",
+  // heroPoster removed: remote "abstract texture" poster used to flash before the
+  // local hero video (5.mp4) loaded. Hero now shows a clean near-black bg until the video plays.
   sideImage:
     "https://images.pexels.com/photos/14996421/pexels-photo-14996421.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1400&w=1000",
   careModes:
@@ -64,11 +64,22 @@ export const HERO = {
   secondary: "Contact Us",
 };
 
-/* SECTION 3 — Introduction / Hospital Overview (dark green, centered) */
+/* SECTION 3 — Introduction / Hospital Overview
+   (light split editorial: copy + real photo; facts sourced from the content document) */
 export const INTRO = {
+  label: "Who We Are",
   title: "Healthcare that puts people first",
   sub: "Expertise in trauma care, orthopaedics and healing",
   emphasis: "Trusted care, built on experience.",
+  image: "/media/building-night.jpg",
+  imageAlt: "Bone Care Trauma Centre — hospital building illuminated at night, Hyderabad",
+  badge: "First hospital in Hyderabad licensed by SHCC",
+  stats: [
+    { value: "2001", label: "Year of establishment" },
+    { value: "89", label: "Beds as of 2023" },
+    { value: "SHCC", label: "Regular licensing recognition" },
+  ],
+  cta: "See Our Journey",
 };
 
 /* SECTION 4 — Core Areas of Care (three image cards + surgical care) */
@@ -82,46 +93,39 @@ export const CORE_AREAS = {
       sub: "Round-the-Clock Care",
       desc: "Round-the-clock emergency services to support patients requiring immediate medical attention.",
       image:
-        "public/media/1.jpg",
-    },
+        "/media/1.jpg",    },
     {
       n: "02",
       title: "Orthopaedic Surgery",
       sub: "Knee Replacement",
       desc: "Specialized orthopaedic care and surgical procedures, including knee replacement surgery.",
       image:
-        "public/media/2.jpg",
-    },
+        "/media/2.jpg",    },
     {
       n: "03",
       title: "Diagnostic Services",
       sub: "CT · X-Ray · Ultrasound · Lab",
       desc: "Diagnostic facilities including CT Scan, X-Ray, ultrasound and laboratory services to support patient assessment and treatment.",
       image:
-        "public/media/3.jpg",
-    },
+        "/media/3.jpg",    },
     {
       n: "04",
       title: "Surgical Care",
       sub: "OT · Endoscopy · Laparoscopy",
       desc: "Surgical facilities including modular operation theatres, endoscopy and laparoscopy.",
       image:
-        "public/media/4.jpg",
-    },
+        "/media/4.jpg",    },
   ],
   additional: [
     {
-      n: "01",
       title: "Surgical Facilities",
       desc: "Modern modular operation theatres supported by endoscopy, laparoscopy and C-Arm facilities.",
     },
     {
-      n: "02",
       title: "Physiotherapy & Rehabilitation",
       desc: "Rehabilitation and physiotherapy services to support recovery and mobility.",
     },
     {
-      n: "03",
       title: "Patient Care & Support",
       desc: "In-house pharmacy, patient rooms, wards and counseling services.",
     },
@@ -232,3 +236,13 @@ export const FOOTER = {
   ],
   bottom: "© Bone Care Trauma Centre. All Rights Reserved.",
 };
+
+/* Footer social icons — ⚠️ PLACEHOLDER hrefs.
+   Bone Care ke real social URLs available nahi hain; inhe real links se replace
+   karein (ya poora array hata den, Footer automatically row hide kar deta hai). */
+export const SOCIAL_LINKS = [
+  { label: "Instagram", href: "#" },
+  { label: "Facebook", href: "#" },
+  { label: "LinkedIn", href: "#" },
+  { label: "Twitter", href: "#" },
+];

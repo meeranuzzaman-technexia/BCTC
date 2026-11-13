@@ -1,8 +1,12 @@
+import { Slice, PersonStanding, Pill } from "lucide-react";
 import Reveal from "./ui/Reveal.jsx";
 import SplitText from "./ui/SplitText.jsx";
 import ArrowButton from "./ui/ArrowButton.jsx";
 import ImageCard from "./ui/ImageCard.jsx";
 import { CORE_AREAS } from "../data/content.js";
+
+/** Filled icons for the three "additional" cards (Surgical / Physio / Patient Care). */
+const ADDITIONAL_ICONS = [Slice, PersonStanding, Pill];
 
 /**
  * SECTION 4 — Core Areas of Care
@@ -13,6 +17,7 @@ export default function CoreAreas() {
   return (
     <section
       id="core-areas"
+      data-logo="colored"
       className="relative z-10 flex min-h-[100svh] flex-col justify-center overflow-hidden bg-paper"
     >
       <div className="px-site pt-20">
@@ -56,22 +61,34 @@ export default function CoreAreas() {
           </ArrowButton>
         </div>
 
-        {/* Three additional cards */}
-        <div className="mt-14 grid grid-cols-1 sm:grid-cols-3 sm:gap-8">
-          {CORE_AREAS.additional.map((item, i) => (
-            <Reveal
-              key={item.n}
-              delay={i * 0.12}
-              y={48}
-              className="dash-top flex flex-col gap-6 py-7"
-            >
-              <p className="t-small font-medium tracking-[0.08em] text-ink/75">{item.n}</p>
-              <div className="flex flex-col gap-3">
-                <p className="t-grid-title text-ink">{item.title}</p>
-                <p className="t-base max-w-[36ch] font-normal text-ink/70">{item.desc}</p>
-              </div>
-            </Reveal>
-          ))}
+        {/* Three additional cards — dark green panel, filled white icons,
+            no index numbers (reference: image-6.png) */}
+        <div className="mt-14 grid grid-cols-1 divide-y divide-white/10 overflow-hidden rounded-[8px] border border-white/10 bg-pure sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+          {CORE_AREAS.additional.map((item, i) => {
+            const Icon = ADDITIONAL_ICONS[i] ?? Pill;
+            return (
+              <Reveal
+                key={item.title}
+                delay={i * 0.12}
+                y={48}
+                className="flex min-h-[240px] flex-col gap-10 p-[clamp(24px,2.6vw,44px)] sm:min-h-[280px]"
+              >
+                <Icon
+                  size={38}
+                  stroke="none"
+                  fill="#FFFFFF"
+                  aria-hidden="true"
+                  className="h-9 w-9"
+                />
+                <div className="mt-auto flex flex-col gap-3">
+                  <p className="t-grid-title text-white">{item.title}</p>
+                  <p className="t-base max-w-[36ch] font-normal text-[#BDD2C1]">
+                    {item.desc}
+                  </p>
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>

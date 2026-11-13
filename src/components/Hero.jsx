@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import ArrowButton from "./ui/ArrowButton.jsx";
-import { HERO, MEDIA } from "../data/content.js";
+import SplitText from "./ui/SplitText.jsx";
+import { HERO } from "../data/content.js";
 
 const VIDEO_SRC = "/media/5.mp4"; // public/media/5.mp4
 
@@ -11,18 +12,18 @@ export default function Hero() {
     <section
       id="home"
       data-theme="dark"
-      className="relative min-h-[100svh] w-full overflow-hidden bg-pure"
+      data-logo="colored"
+      className="relative min-h-screen min-h-[100svh] w-full overflow-hidden bg-pure"
     >
       {/* Background video */}
       <div className="absolute inset-0 overflow-hidden">
         <video
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover object-[72%_center] md:object-[62%_center] lg:object-center"
           autoPlay
           muted
           loop
           playsInline
           preload="auto"
-          poster={MEDIA.heroPoster}
         >
           <source src={VIDEO_SRC} type="video/mp4" />
         </video>
@@ -33,7 +34,7 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="px-site relative z-10 flex min-h-[100svh] w-full flex-col pt-[clamp(96px,11vw,150px)] pb-[28px] md:pb-[42px]">
+      <div className="hero-fit px-site relative z-10 flex min-h-screen min-h-[100svh] w-full flex-col pt-[clamp(84px,9vw,150px)] pb-[max(96px,calc(env(safe-area-inset-bottom,0px)+64px))] md:pb-[max(56px,calc(env(safe-area-inset-bottom,0px)+32px))]">
         {/* Heading (top-left) */}
         {HERO.label && (
           <motion.p
@@ -44,41 +45,35 @@ export default function Hero() {
           >
             {HERO.label}
           </motion.p>
-        )}
-        <motion.h1
+        )}        <SplitText
+          as="h1"
+          lines={HERO.title}
+          delay={0.25}
           className="t-h1 max-w-[14ch] text-paper"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2, ease }}
-        >
-          {HERO.title}
-        </motion.h1>
+        />
 
         {/* Bottom row */}
-        <div className="mt-auto flex flex-col items-start gap-8 md:flex-row md:items-end md:justify-between">
+        <div className="hero-bottom mt-auto flex flex-col items-start gap-6 md:flex-row md:items-end md:justify-between md:gap-8">
           {/* Bottom-left: supporting copy */}
           <motion.p
             className="t-base-lg max-w-[46ch] text-paper/90"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.55, ease }}
-          >
+            transition={{ duration: 0.9, delay: 0.55, ease }}          >
             {HERO.sub}
           </motion.p>
 
-          {/* Bottom-right: CTAs */}
-          <motion.div
-            className="flex w-full flex-col gap-4 sm:w-auto sm:flex-row sm:items-center"
+          {/* Bottom-right: CTAs */}          <motion.div
+            className="hero-ctas flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center sm:gap-4"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.75, ease }}
-          >
+            transition={{ duration: 0.9, delay: 0.75, ease }}          >
             <ArrowButton variant="white" size="lg" href="#facilities">
               {HERO.primary}
             </ArrowButton>
             <a
               href="#contact"
-              className="t-small inline-flex h-[52px] items-center justify-center whitespace-nowrap rounded-full border border-paper/45 px-6 font-medium tracking-[0.015em] text-paper transition-colors duration-300 hover:bg-paper hover:text-ink"
+              className="t-small inline-flex h-[52px] items-center justify-center whitespace-nowrap rounded-full border border-[#01CAB8]/70 px-6 font-medium tracking-[0.015em] text-[#01CAB8] transition-colors duration-300 hover:bg-[#01CAB8] hover:text-[#052C29]"
             >
               {HERO.secondary}
             </a>

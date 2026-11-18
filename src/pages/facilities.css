@@ -1,0 +1,36 @@
+.facilities-page{--facility-line:#c6d7cf}
+.facilities-hero .about-hero-content{flex:1;align-items:center}
+.facilities-hero h1{font-size:clamp(62px,7.2vw,118px)}
+.facilities-hero .about-hero-content{grid-template-columns:1.9fr 1fr;gap:40px}
+.facilities-highlights{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding-top:60px;padding-bottom:60px;background:var(--biege)}
+.facility-highlight{padding:0 36px;border-left:1px solid #b6ccc2}.facility-highlight:first-child{padding-left:0;border-left:0}.facility-highlight:last-child{padding-right:0}
+.facility-highlight-number{font-size:clamp(64px,7vw,108px);line-height:1;letter-spacing:-.07em;margin:0 0 18px;font-weight:400}
+.facilities-page .facility-highlight h2{font-size:clamp(21px,2.1vw,30px);letter-spacing:-.035em;line-height:1.2;margin:0 0 10px}
+.facility-highlight-detail{font-size:13px;color:#546a65;line-height:1.5;margin:0;max-width:28ch}
+.facilities-directory{background:var(--white)}
+.facilities-filters{display:flex;flex-wrap:wrap;gap:9px;padding-bottom:24px;border-bottom:1px solid var(--facility-line)}
+.facilities-filters button{display:flex;justify-content:center;align-items:center;gap:15px;min-height:45px;padding:12px 19px;border:1px solid #bcd0c7;border-radius:999px;color:var(--black);background:transparent;font:inherit;font-size:13px;line-height:1.3;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s}
+.facilities-filters button>span{font-size:10px;opacity:.6}
+.facilities-filters button:hover{background:var(--biege)}
+.facilities-filters button[aria-pressed=true]{background:var(--pure);border-color:var(--pure);color:var(--white)}
+.facilities-result-count{font-size:11px;color:#587267;letter-spacing:.015em;margin:22px 0}
+.facilities-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.facility-card{padding:28px 28px 32px;border:1px solid var(--facility-line);background:transparent;min-height:245px;transition:background-color .25s,border-color .25s}
+.facility-card:hover{background:#eff5f1;border-color:#8fafa1}
+.facility-card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:35px}
+.facility-icon{width:48px;height:48px;border:1px solid #c6d7cf;border-radius:50%;display:grid;place-items:center;color:#226f64}
+.facility-card-number{font-size:11px;letter-spacing:.06em;color:#6b8477}
+.facility-card h3{font-size:clamp(22px,2vw,29px);line-height:1.18;font-weight:500;letter-spacing:-.04em;margin:0;max-width:24ch;overflow-wrap:break-word}
+.facility-card-detail{font-size:13px;line-height:1.6;color:#546a65;margin:12px 0 0}
+.facilities-surgery{background:var(--biege);display:grid;grid-template-columns:.8fr 1.2fr;gap:85px;align-items:center}
+.facilities-surgery-mark{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;min-height:360px;aspect-ratio:1.2;max-width:500px;border:1px solid #a8c5b6;border-radius:50%}
+.facilities-surgery-mark>svg{width:40%;height:auto;color:#1c7d6a}
+.facilities-surgery-mark>span{text-transform:uppercase;letter-spacing:.16em;font-size:10px;color:#546a65}
+.facilities-surgery-copy>p:not(.about-kicker){font-size:16px;line-height:1.65;color:#546a65;max-width:45ch;margin:26px 0}
+.facilities-contact-details{border-left:1px solid rgb(255 255 255 / .2);padding:20px 0 20px 45px}
+.facilities-phone{display:flex;gap:14px;align-items:center;font-size:clamp(24px,2.7vw,40px);line-height:1.3;letter-spacing:-.04em;margin-bottom:24px}
+.facilities-phone>svg{color:var(--accent);flex:none}
+.facilities-email{display:flex;gap:20px;align-items:center;justify-content:space-between;font-size:16px;padding-bottom:18px;border-bottom:1px solid rgb(255 255 255 / .2);overflow-wrap:anywhere}
+.facilities-contact-details>p{font-size:14px;line-height:1.6;max-width:32ch;color:rgb(251 252 250 / .65);margin:22px 0 0}
+@media(max-width:1023px){.facilities-hero .about-hero-content{grid-template-columns:1.6fr 1fr}.facilities-hero h1{font-size:clamp(56px,7.6vw,88px)}.facilities-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.facility-card{padding:23px}.facilities-surgery{gap:40px;grid-template-columns:.8fr 1.2fr}.facilities-surgery-mark{min-height:270px}.facilities-contact-details{padding-left:25px}.facilities-phone{font-size:26px}}
+@media(max-width:639px){.facilities-hero .about-hero-content{grid-template-columns:1fr;align-content:center;gap:32px;padding:40px 0}.facilities-hero h1{font-size:clamp(44px,11vw,68px)}.facilities-highlights{padding-top:30px;padding-bottom:30px;grid-template-columns:1fr}.facility-highlight,.facility-highlight:first-child,.facility-highlight:last-child{border-left:0;padding:22px 0;display:grid;grid-template-columns:95px 1fr;gap:0 18px;align-items:center}.facility-highlight+.facility-highlight{border-top:1px solid #b6ccc2}.facility-highlight-number{font-size:65px;grid-row:span 2;margin:0}.facilities-page .facility-highlight h2{font-size:21px;margin:0 0 7px}.facility-highlight-detail{font-size:12px}.facilities-filters{gap:8px;padding-bottom:19px}.facilities-filters button{font-size:11px;gap:9px;padding:10px 13px;min-height:42px}.facilities-grid{grid-template-columns:1fr;gap:12px}.facility-card{padding:24px;min-height:210px}.facility-card-top{margin-bottom:28px}.facility-card h3{font-size:26px}.facilities-surgery{grid-template-columns:1fr;gap:36px}.facilities-surgery-mark{min-height:0;width:210px;aspect-ratio:1;margin:auto;gap:20px}.facilities-surgery-mark>span{font-size:8px}.facilities-contact-details{border-left:0;border-top:1px solid rgb(255 255 255 / .2);padding:32px 0 0}.facilities-phone{font-size:28px}.facilities-email{font-size:15px}}

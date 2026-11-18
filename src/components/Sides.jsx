@@ -46,7 +46,7 @@ export default function Sides() {
           </Reveal>
 
           {/* Credibility stats */}
-          <div className="grid w-full grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-4">
+          <div className="grid w-full grid-cols-2 gap-x-6 gap-y-5 lg:grid-cols-3">
             {JOURNEY.stats.map((s) => (
               <div key={s.label} className="dash-top flex flex-col gap-2 pt-4">
                 <p className="text-[clamp(20px,1.8vw,30px)] font-medium leading-none tracking-[-0.02em] text-ink">

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import ArrowButton from "./ui/ArrowButton.jsx";
+import SiteLink from "./ui/SiteLink.jsx";
 import SplitText from "./ui/SplitText.jsx";
 import { HERO } from "../data/content.js";
 
@@ -78,12 +79,12 @@ export default function Hero() {
             <ArrowButton variant="white" size="hero" href="#facilities">
               {HERO.primary}
             </ArrowButton>
-            <a
-              href="#contact"
+            <SiteLink
+              href="/contact-us/"
               className="t-small inline-flex h-[42px] items-center justify-center whitespace-nowrap rounded-full border border-[#01CAB8]/70 px-4 text-[13px] font-medium tracking-[0.015em] text-[#01CAB8] transition-colors duration-300 hover:bg-[#01CAB8] hover:text-[#052C29] md:h-[52px] md:px-6"
             >
               {HERO.secondary}
-            </a>
+            </SiteLink>
           </motion.div>
         </div>
       </div>

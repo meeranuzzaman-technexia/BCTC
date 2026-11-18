@@ -1,3 +1,4 @@
+import SiteLink from "./ui/SiteLink.jsx";
 import { FOOTER, SOCIAL_LINKS } from "../data/content.js";
 
 /**
@@ -101,13 +102,13 @@ export default function Footer() {
         <div className="flex w-full flex-col justify-between gap-10 lg:flex-row lg:items-start">
           {/* Logo + description + socials */}
           <div className="flex w-full flex-col gap-6 lg:max-w-[34%]">
-            <a href="#home" aria-label="Bone Care Trauma Centre — Home" className="w-fit">
+            <SiteLink href="#home" aria-label="Bone Care Trauma Centre — Home" className="w-fit">
               <img
                 src="/media/bone-care-white.png"
                 alt="Bone Care Trauma Centre"
                 className="h-auto w-[15%]"
               />
-            </a>
+            </SiteLink>
             <p className="t-base text-paper/85">{FOOTER.tagline}</p>
             <p className="max-w-[70%] t-small font-normal text-paper/65">{FOOTER.since}</p>
 
@@ -118,7 +119,7 @@ export default function Footer() {
                   if (!Icon) return null;
                   return (
                     <li key={s.label}>
-                      <a
+                      <SiteLink
                         href={s.href}
                         target={s.href.startsWith("http") ? "_blank" : undefined}
                         rel="noreferrer"
@@ -126,7 +127,7 @@ export default function Footer() {
                         className="text-paper/55 transition-colors duration-300 hover:text-paper"
                       >
                         <Icon />
-                      </a>
+                      </SiteLink>
                     </li>
                   );
                 })}
@@ -144,14 +145,14 @@ export default function Footer() {
                 <ul className="flex flex-col gap-3">
                   {col.links.map((l, i) => (
                     <li key={l.label + i}>
-                      <a
+                      <SiteLink
                         href={l.href}
                         target={l.href.startsWith("http") ? "_blank" : undefined}
                         rel="noreferrer"
                         className="t-small font-normal text-paper/70 transition-colors duration-300 hover:text-paper"
                       >
                         {l.label}
-                      </a>
+                      </SiteLink>
                     </li>
                   ))}
                 </ul>
@@ -165,14 +166,14 @@ export default function Footer() {
           <p className="t-small text-paper/65">{FOOTER.bottom}</p>
           <p className="t-small text-paper/65">
             Created by{" "}
-            <a
+            <SiteLink
               href="https://technexia.com/"
               target="_blank"
               rel="noreferrer"
               className="tx-logo text-paper underline-offset-4 transition-colors duration-300"
             >
               technexia.
-            </a>
+            </SiteLink>
           </p>
         </div>
       </div>

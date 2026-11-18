@@ -30,7 +30,7 @@ export default function CTA() {
           </Reveal>
           <Reveal delay={0.3}>
             <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-              <ArrowButton variant="white" size="lg" href={CONTACT.emailHref}>
+              <ArrowButton variant="white" size="lg" href="/contact-us/">
                 {CTA_DATA.primary}
               </ArrowButton>
               <a

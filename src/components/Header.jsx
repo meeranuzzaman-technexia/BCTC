@@ -1,3 +1,4 @@
+import SiteLink from "./ui/SiteLink.jsx";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import ArrowButton from "./ui/ArrowButton.jsx";
@@ -105,7 +106,7 @@ export default function Header() {
         <div className="px-site w-full py-[10px] md:py-[12px]">
           <div className="flex items-center justify-between gap-6">
             {/* Logo */}
-            <a
+            <SiteLink
               href="#home"
               onClick={closeMenu}
               aria-label="Bone Care Trauma Centre — Home"
@@ -120,19 +121,19 @@ export default function Header() {
                 alt="Bone Care Trauma Centre"
                 className="h-[42px] w-auto transition-all duration-500 md:h-[52px]"
               />
-            </a>
+            </SiteLink>
 
             {/* Desktop nav */}
             <div className="hidden items-center gap-7 lg:flex">
               <nav className="flex items-center gap-[14px]">
                 {NAV_LINKS.map((l, i) => (
                   <div key={l.label + i} className="flex items-center gap-[14px]">
-                    <a
+                    <SiteLink
                       href={l.href}
                       className={`t-nav transition-all duration-500 hover:opacity-75 ${textColor}`}
                     >
                       {l.label}
-                    </a>
+                    </SiteLink>
                     {i < NAV_LINKS.length - 1 && (
                       <span className={`h-1 w-1 rounded-full transition-colors duration-500 ${dotColor}`} />
                     )}
@@ -174,7 +175,7 @@ export default function Header() {
                 <p className="t-base px-5 text-paper/65 tracking-[0.02em]">Menu</p>
                 <div className="flex flex-col">
                   {MOBILE_LINKS.map((l, i) => (
-                    <a
+                    <SiteLink
                       key={l.label}
                       href={l.href}
                       onClick={closeMenu}
@@ -183,7 +184,7 @@ export default function Header() {
                       }`}
                     >
                       {l.label}
-                    </a>
+                    </SiteLink>
                   ))}
                 </div>
                 <div className="mt-6 flex flex-col gap-4 px-5">
@@ -203,21 +204,21 @@ export default function Header() {
               <div className="mt-12 grid grid-cols-2 gap-6 px-5">
                 <div className="flex flex-col gap-3">
                   <p className="t-small text-paper/65 tracking-[0.02em]">Contact</p>
-                  <a href={CONTACT.emailHref} className="t-base text-paper break-all">
+                  <SiteLink href={CONTACT.emailHref} className="t-base text-paper break-all">
                     {CONTACT.email}
-                  </a>
+                  </SiteLink>
                 </div>
                 <div className="flex flex-col gap-3">
                   <p className="t-small text-paper/65 tracking-[0.02em]">Phone</p>
-                  <a href={CONTACT.phone1Href} className="t-base text-paper">
+                  <SiteLink href={CONTACT.phone1Href} className="t-base text-paper">
                     {CONTACT.phone1}
-                  </a>
-                  <a href={CONTACT.phone2Href} className="t-base text-paper">
+                  </SiteLink>
+                  <SiteLink href={CONTACT.phone2Href} className="t-base text-paper">
                     {CONTACT.phone2}
-                  </a>
-                  <a href={CONTACT.mobileHref} className="t-base text-paper">
+                  </SiteLink>
+                  <SiteLink href={CONTACT.mobileHref} className="t-base text-paper">
                     {CONTACT.mobile}
-                  </a>
+                  </SiteLink>
                 </div>
               </div>
             </div>

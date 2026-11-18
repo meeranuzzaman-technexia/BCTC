@@ -1,3 +1,4 @@
+import SiteLink from "./SiteLink.jsx";
 import { ArrowUpRight } from "lucide-react";
 
 /**
@@ -37,9 +38,9 @@ export default function ArrowButton({
 
   if (href) {
     return (
-      <a href={href} onClick={onClick} className={classes}>
+      <SiteLink href={href} onClick={onClick} className={classes}>
         {content}
-      </a>
+      </SiteLink>
     );
   }
   return (

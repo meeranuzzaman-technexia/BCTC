@@ -139,7 +139,6 @@ export const JOURNEY = {
   text: "Established in 2001 with 12 beds, Bone Care Trauma Centre has grown into a multi-specialty healthcare facility. The hospital expanded from a single-specialty orthopaedics hospital into a broader medical and surgical care institution. Bone Care Trauma Centre is the first hospital in Hyderabad, Sindh, licensed by the Sindh Healthcare Commission (SHCC).",
   stats: [
     { value: "2001", label: "Year of establishment" },
-    { value: "12 Beds", label: "Initial hospital capacity" },
     { value: "89 Beds", label: "Hospital capacity as of 2023" },
     { value: "SHCC", label: "Regular licensing recognition" },
   ],

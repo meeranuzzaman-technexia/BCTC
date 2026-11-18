@@ -86,7 +86,7 @@ body {
   background-color: var(--grey);
   color: var(--black);
   font-family: var(--font-sans);
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   font-weight: 400;
   line-height: 1;
   overflow-x: hidden;
